@@ -1,4 +1,6 @@
-Mod Template for MonkeyLoader
+Distant Component Optimizer
 =============================
 
-A mod template, that shows the basic project setup for [MonkeyLoader](https://github.com/MonkeyModdingTroop/MonkeyLoader) mods.
+This is a MonkeyLoader mod. https://github.com/ResoniteModdingGroup/MonkeyLoader.GamePacks.Resonite
+
+Limits the update frequency of components that are too far away from you. Configurable.
