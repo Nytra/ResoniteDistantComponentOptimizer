@@ -12,7 +12,7 @@
     <Version>1.0.0</Version>
     <Description>Limits the update frequency of distant components.</Description>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageProjectUrl>https://github.com/ResoniteModdingGroup/MonkeyLoader.ModTemplate</PackageProjectUrl>
+    <PackageProjectUrl>https://github.com/Nytra/ResoniteDistantComponentOptimizer</PackageProjectUrl>
     <PackageTags>mod; mods; monkeyloader; resonite</PackageTags>
     <TargetsForTfmSpecificContentInPackage>$(TargetsForTfmSpecificContentInPackage)</TargetsForTfmSpecificContentInPackage>
   </PropertyGroup>

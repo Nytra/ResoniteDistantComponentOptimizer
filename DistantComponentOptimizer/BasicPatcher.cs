@@ -9,7 +9,6 @@ namespace DistantComponentOptimizer
 {
     internal class DistantComponentOptimizerConfig : ConfigSection
     {
-        public readonly DefiningConfigKey<bool> EnableUpdateThrottling = new("EnableUpdateThrottling", "EnableUpdateThrottling", () => true);
         public readonly DefiningConfigKey<int> UpdateFrequency = new("UpdateFrequency", "Frequency of updates in frames", () => 30, valueValidator: value => value > 0);
         public readonly DefiningConfigKey<float> ThrottleDistance = new("ThrottleDistance", "Distance user can be from slot before throttling updates", () => 20f);
 
@@ -22,9 +21,10 @@ namespace DistantComponentOptimizer
     [HarmonyPatch(typeof(ComponentBase<Component>), "InternalRunUpdate")]
     internal class DistantComponentOptimizer : ConfiguredResoniteMonkey<DistantComponentOptimizer, DistantComponentOptimizerConfig>
     {
+        public override bool CanBeDisabled => true;
         private static bool Prefix(ComponentBase<Component> __instance)
         {
-            if (!ConfigSection.EnableUpdateThrottling) return true;
+            if (!Enabled) return true;
             if (__instance.World.IsUserspace()) return true;
             if (__instance.Enabled && __instance.CanRunUpdates && !__instance.UserspaceOnly)
             {
