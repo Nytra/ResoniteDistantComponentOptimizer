@@ -30,10 +30,14 @@ namespace DistantComponentOptimizer
                 if (__instance.FindNearestParent<Slot>() is Slot slot && !slot.IsUnderLocalUser)
                 {
                     var globPos = slot.GlobalPosition;
-                    var userPos = slot.LocalUserRoot.GetGlobalPosition(UserRoot.UserNode.View);
-                    if (MathX.Distance(globPos, userPos) > ConfigSection.ThrottleDistance * __instance.LocalUserRoot.GlobalScale)
+                    var userPos = slot.World.LocalUserViewPosition;
+                    var num = ConfigSection.ThrottleDistance * __instance.LocalUserRoot.GlobalScale;
+                    if (MathX.DistanceSqr(globPos, userPos) > num * num)
                     {
                         if (__instance.Time.LocalUpdateIndex % ConfigSection.UpdateInterval != 0) return false;
+
+                        // could use referenceID here to make the updates more spread out instead of running all in one frame
+                        // if ((__instance.Time.LocalUpdateIndex + (int)__instance.ReferenceID.Position) % ConfigSection.UpdateInterval != 0) return false;
                     }
                 }
             }
