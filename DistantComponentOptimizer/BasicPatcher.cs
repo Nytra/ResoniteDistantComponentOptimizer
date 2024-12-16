@@ -9,8 +9,8 @@ namespace DistantComponentOptimizer
 {
     internal class DistantComponentOptimizerConfig : ConfigSection
     {
-        public readonly DefiningConfigKey<int> UpdateFrequency = new("UpdateFrequency", "Frequency of updates in frames", () => 30, valueValidator: value => value > 0);
-        public readonly DefiningConfigKey<float> ThrottleDistance = new("ThrottleDistance", "Distance user can be from slot before throttling updates", () => 20f);
+        public readonly DefiningConfigKey<int> UpdateInterval = new("UpdateInterval", "Interval between updates (roughly equiv. to frames)", () => 30, valueValidator: value => value > 0);
+        public readonly DefiningConfigKey<float> ThrottleDistance = new("ThrottleDistance", "Distance user can be from slot before throttling updates (Meters)", () => 20f);
 
         public override string Description => "Contains the config for DistantComponentOptimizer.";
         public override string Id => "DistantComponentOptimizer Config";
@@ -24,17 +24,16 @@ namespace DistantComponentOptimizer
         public override bool CanBeDisabled => true;
         private static bool Prefix(ComponentBase<Component> __instance)
         {
-            if (!Enabled) return true;
-            if (__instance.World.IsUserspace()) return true;
+            if (!Enabled || __instance.World.IsUserspace()) return true;
             if (__instance.Enabled && __instance.CanRunUpdates && !__instance.UserspaceOnly)
             {
-                if (__instance.FindNearestParent<Slot>() is Slot slot)
+                if (__instance.FindNearestParent<Slot>() is Slot slot && !slot.IsUnderLocalUser)
                 {
                     var globPos = slot.GlobalPosition;
-                    var userPos = slot.LocalUser.Root.GetGlobalPosition(UserRoot.UserNode.View);
+                    var userPos = slot.LocalUserRoot.GetGlobalPosition(UserRoot.UserNode.View);
                     if (MathX.Distance(globPos, userPos) > ConfigSection.ThrottleDistance * __instance.LocalUserRoot.GlobalScale)
                     {
-                        if (__instance.Time.LocalUpdateIndex % ConfigSection.UpdateFrequency != 0) return false;
+                        if (__instance.Time.LocalUpdateIndex % ConfigSection.UpdateInterval != 0) return false;
                     }
                 }
             }
