@@ -31,13 +31,13 @@ namespace DistantComponentOptimizer
                 {
                     var globPos = slot.GlobalPosition;
                     var userPos = slot.World.LocalUserViewPosition;
-                    var num = ConfigSection.ThrottleDistance * __instance.LocalUserRoot.GlobalScale;
+                    var num = ConfigSection.ThrottleDistance * __instance.LocalUserRoot?.GlobalScale ?? 1f;
                     if (MathX.DistanceSqr(globPos, userPos) > num * num)
                     {
                         if (__instance.Time.LocalUpdateIndex % ConfigSection.UpdateInterval != 0) return false;
 
                         // could use referenceID here to make the updates more spread out instead of running all in one frame
-                        // if ((__instance.Time.LocalUpdateIndex + (int)__instance.ReferenceID.Position) % ConfigSection.UpdateInterval != 0) return false;
+                        //if ((__instance.Time.LocalUpdateIndex + (int)__instance.ReferenceID.Position) % ConfigSection.UpdateInterval != 0) return false;
                     }
                 }
             }
