@@ -11,7 +11,8 @@ namespace DistantComponentOptimizer
     {
         public readonly DefiningConfigKey<int> UpdateInterval = new("UpdateInterval", "Interval between updates (roughly equiv. to frames)", () => 30, valueValidator: value => value > 0 && value <= 60);
         public readonly DefiningConfigKey<float> ThrottleDistance = new("ThrottleDistance", "Distance user can be from slot before throttling updates (Meters)", () => 20f);
-        public readonly DefiningConfigKey<bool> SpreadUpdates = new("SpreadUpdates", "Spread out the updates more instead of running them all in one frame", () => false);
+        public readonly DefiningConfigKey<bool> SpreadUpdates = new("SpreadUpdates", "Spread out the updates more instead of running them all in one frame.", () => false);
+        public readonly DefiningConfigKey<bool> IgnoreUserScale = new("IgnoreUserScale", "Ignore user scale in distance calculation.", () => false);
         //public readonly DefiningConfigKey<Type> ExcludeType1 = new("ExcludeType1", "Excludes this type from throttling.");
         //public readonly DefiningConfigKey<Type> ExcludeType2 = new("ExcludeType2", "Excludes this type from throttling.");
         //public readonly DefiningConfigKey<Type> ExcludeType3 = new("ExcludeType3", "Excludes this type from throttling.");
@@ -44,7 +45,12 @@ namespace DistantComponentOptimizer
                     {
                         var globPos = slot.GlobalPosition;
                         var userPos = slot.World.LocalUserViewPosition;
-                        var num = ConfigSection.ThrottleDistance * __instance.LocalUserRoot?.GlobalScale ?? 1f;
+                        float mult = 1f;
+                        if (!ConfigSection.IgnoreUserScale)
+                        {
+                            mult = __instance.LocalUserRoot?.GlobalScale ?? 1f;
+                        }
+                        var num = ConfigSection.ThrottleDistance * mult;
                         if (MathX.DistanceSqr(globPos, userPos) > num * num)
                         {
                             if (ConfigSection.SpreadUpdates)
