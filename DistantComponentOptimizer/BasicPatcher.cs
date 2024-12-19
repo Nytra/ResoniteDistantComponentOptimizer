@@ -32,6 +32,7 @@ namespace DistantComponentOptimizer
             try
             {
                 if (!Enabled || __instance.World.IsUserspace()) return true;
+                // Using the ExcludeTypes makes the framerate a lot worse, need to find a better way to do this
                 //if (ConfigSection.ExcludeType1 != null || ConfigSection.ExcludeType2 != null || ConfigSection.ExcludeType3 != null)
                 //{
                 //    var type = __instance.GetType();
