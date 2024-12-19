@@ -49,7 +49,7 @@ namespace DistantComponentOptimizer
                         {
                             if (ConfigSection.SpreadUpdates)
                             {
-                                if ((__instance.Time.LocalUpdateIndex + (int)__instance.ReferenceID.Position) % ConfigSection.UpdateInterval != 0) return false;
+                                if (((__instance.Time?.LocalUpdateIndex ?? 0) + (int)__instance.ReferenceID.Position) % ConfigSection.UpdateInterval != 0) return false;
                             }
                             else
                             {
