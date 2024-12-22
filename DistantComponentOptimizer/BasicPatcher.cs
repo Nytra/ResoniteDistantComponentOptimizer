@@ -19,7 +19,7 @@ namespace DistantComponentOptimizer
 
         public override string Description => "Contains the config for DistantComponentOptimizer.";
         public override string Id => "DistantComponentOptimizer Config";
-        public override Version Version { get; } = new Version(1, 0, 0);
+        public override Version Version { get; } = new Version(1, 1, 0);
     }
 
     [HarmonyPatchCategory(nameof(DistantComponentOptimizer))]

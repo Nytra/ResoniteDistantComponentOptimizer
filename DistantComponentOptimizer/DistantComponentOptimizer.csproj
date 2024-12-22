@@ -9,7 +9,7 @@
     <PackageId>DistantComponentOptimizer</PackageId>
     <Title>DistantComponentOptimizer</Title>
     <Authors>Nytra</Authors>
-    <Version>1.0.2</Version>
+    <Version>1.1.0</Version>
     <Description>Limits the update frequency of distant components.</Description>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/Nytra/ResoniteDistantComponentOptimizer</PackageProjectUrl>
@@ -43,7 +43,7 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Resonite.Elements.Core" Version="1.4.2" />
-    <PackageReference Include="Resonite.FrooxEngine" Version="2024.11.21.479" />
+    <PackageReference Include="Resonite.FrooxEngine" Version="2024.12.19.538" />
     <PackageReference Include="System.Text.Json" Version="9.0.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
