@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <PropertyGroup>
+	<TargetFramework>netstandard2.0</TargetFramework>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <PackageId>DistantComponentOptimizer</PackageId>
     <Title>DistantComponentOptimizer</Title>
