@@ -10,7 +10,7 @@
     <PackageId>DistantComponentOptimizer</PackageId>
     <Title>DistantComponentOptimizer</Title>
     <Authors>Nytra</Authors>
-    <Version>1.1.0</Version>
+    <Version>1.1.1</Version>
     <Description>Limits the update frequency of distant components.</Description>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/Nytra/ResoniteDistantComponentOptimizer</PackageProjectUrl>
