@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <PropertyGroup>
-	<TargetFramework>netstandard2.0</TargetFramework>
+	<TargetFramework>net9.0</TargetFramework>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <PackageId>DistantComponentOptimizer</PackageId>
     <Title>DistantComponentOptimizer</Title>
@@ -36,16 +36,15 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="MonkeyLoader" Version="0.24.0-beta" />
-    <PackageReference Include="MonkeyLoader.GamePacks.Unity" Version="0.7.0-beta" />
-    <PackageReference Include="MonkeyLoader.GamePacks.Resonite" Version="0.21.2-beta" GeneratePathProperty="true" />
+    <PackageReference Include="MonkeyLoader" Version="0.27.2-beta" />
+    <PackageReference Include="MonkeyLoader.GamePacks.Resonite" Version="0.24.1-beta" GeneratePathProperty="true" />
     <PackageReference Include="PolySharp" Version="1.15.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Resonite.Elements.Core" Version="1.4.2" />
-    <PackageReference Include="Resonite.FrooxEngine" Version="2024.12.19.538" />
-    <PackageReference Include="System.Text.Json" Version="9.0.0">
+    <PackageReference Include="Resonite.Elements.Core" Version="1.4.9.4" />
+    <PackageReference Include="Resonite.FrooxEngine" Version="2025.8.25.222" />
+    <PackageReference Include="System.Text.Json" Version="9.0.1">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
